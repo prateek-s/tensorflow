@@ -1,0 +1,26 @@
+
+* Changing the root directory from /var/lib 
+
+Systemd aargh
+
+/etc/default/docker no longer the recommended way 
+
+systemctl status docker.service
+
+edit /lib/system.../docker.service and add "-g /data2/docker" to ExecStart 
+
+then,
+    systemctl daemon-reload
+    systemctl restart docker
+    docker info - verify the root dir has updated
+
+* Export Image 
+
+docker save -o img.tar 
+
+docker load 
+
+* Networking 
+
+docker network create --subnet=172.18.0.0/16 tfnet
+
